@@ -1,0 +1,14 @@
+{
+  "name": "javascript-playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "sample": "tsc sample.ts && node sample.js",
+    "sample::tsc": "tsc sample.ts",
+    "sample::node": "node sample.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
