@@ -1,9 +1,16 @@
 /**
- * what do i want? Where do I go from here?
+ * what do i want? Where do I go from here? - Promises
+ * Thread1 - Start, Wait, Fire
+ * Thread2 - Start, Fire
+ * // Thread1 start
+ * // Thread2 start
+ * // Thread2 fire
+ * // Thread1 fire
+ * 
  */
 import axios from "axios"
 
-class Sample {
+export default class Sample {
     greeting: string;
    
     constructor(message: string) {
@@ -23,5 +30,5 @@ class Sample {
     }
   }
    
-  let sample = new Sample("busta");
-  // sample.greet();
+let sample = new Sample("busta");
+sample.greet();

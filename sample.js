@@ -1,7 +1,14 @@
 "use strict";
 exports.__esModule = true;
 /**
- * what do i want? Where do I go from here?
+ * what do i want? Where do I go from here? - Promises
+ * Thread1 - Start, Wait, Fire
+ * Thread2 - Start, Fire
+ * // Thread1 start
+ * // Thread2 start
+ * // Thread2 fire
+ * // Thread1 fire
+ *
  */
 var axios_1 = require("axios");
 var Sample = /** @class */ (function () {
@@ -20,5 +27,6 @@ var Sample = /** @class */ (function () {
     };
     return Sample;
 }());
+exports["default"] = Sample;
 var sample = new Sample("busta");
-// sample.greet();
+sample.greet();
