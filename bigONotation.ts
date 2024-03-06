@@ -100,7 +100,7 @@ export default class Main {
             for(let j = i - 1; j >= 0 && array[j] > currentVal; j--) {
                 array[j + 1] = array[j];
             }
-            array[j + 1] = currentVal;
+            array[i + 1] = currentVal;
         }
         return array;
     }
