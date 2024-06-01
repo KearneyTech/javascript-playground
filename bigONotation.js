@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /**
  * Code examples based on the following article,
  *
@@ -6,8 +6,7 @@
  */
 exports.__esModule = true;
 var Main = /** @class */ (function () {
-    function Main() {
-    }
+    function Main() {}
     //This code will run n times. The time complexity of this code is O(n).
     Main.prototype.forLoop = function (n) {
         for (var i = 0; i < n; i++) {
@@ -47,8 +46,7 @@ var Main = /** @class */ (function () {
         while (array[middle] !== value && start <= end) {
             if (value < array[middle]) {
                 end = middle - 1;
-            }
-            else {
+            } else {
                 start = middle + 1;
             }
             middle = Math.floor((start + end) / 2);
@@ -64,7 +62,7 @@ var Main = /** @class */ (function () {
         for (var i = array.length; i > 0; i--) {
             for (var j = 0; j < i - 1; j++) {
                 if (array[j] > array[j + 1]) {
-                    _a = [array[j + 1], array[j]], array[j] = _a[0], array[j + 1] = _a[1];
+                    (_a = [array[j + 1], array[j]]), (array[j] = _a[0]), (array[j + 1] = _a[1]);
                 }
             }
         }
@@ -100,8 +98,7 @@ var Main = /** @class */ (function () {
     };
     //This code will run n log(n) times. The time complexity of this code is O(n log(n)).
     Main.prototype.sortMerge = function (array) {
-        if (array.length <= 1)
-            return array;
+        if (array.length <= 1) return array;
         var mid = Math.floor(array.length / 2);
         var left = this.sortMerge(array.slice(0, mid));
         var right = this.sortMerge(array.slice(mid));
@@ -115,8 +112,7 @@ var Main = /** @class */ (function () {
             if (left[i] < right[j]) {
                 results.push(left[i]);
                 i++;
-            }
-            else {
+            } else {
                 results.push(right[j]);
                 j++;
             }
@@ -133,8 +129,12 @@ var Main = /** @class */ (function () {
     };
     //This code will run n log(n) times. The time complexity of this code is O(n log(n)).
     Main.prototype.sortQuick = function (array, left, right) {
-        if (left === void 0) { left = 0; }
-        if (right === void 0) { right = array.length - 1; }
+        if (left === void 0) {
+            left = 0;
+        }
+        if (right === void 0) {
+            right = array.length - 1;
+        }
         if (left < right) {
             var pivotIndex = this.helperPivot(array, left, right);
             this.sortQuick(array, left, pivotIndex - 1);
@@ -143,8 +143,12 @@ var Main = /** @class */ (function () {
         return array;
     };
     Main.prototype.helperPivot = function (array, start, end) {
-        if (start === void 0) { start = 0; }
-        if (end === void 0) { end = array.length + 1; }
+        if (start === void 0) {
+            start = 0;
+        }
+        if (end === void 0) {
+            end = array.length + 1;
+        }
         var pivot = array[start];
         var swapIdx = start;
         for (var i = start + 1; i < array.length; i++) {
@@ -162,5 +166,5 @@ var Main = /** @class */ (function () {
         array[j] = temp;
     };
     return Main;
-}());
-exports["default"] = Main;
+})();
+exports['default'] = Main;

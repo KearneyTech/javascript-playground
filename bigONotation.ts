@@ -1,13 +1,13 @@
 /**
  * Code examples based on the following article,
- * 
+ *
  * https://hackernoon.com/the-big-o-notation-in-javascript
  */
 
 export default class Main {
     //This code will run n times. The time complexity of this code is O(n).
     forLoop(n: number) {
-        for(let i = 0; i < n; i++) {
+        for (let i = 0; i < n; i++) {
             console.log(i);
         }
     }
@@ -15,7 +15,7 @@ export default class Main {
     //This code will run n times. The time complexity of this code is O(n).
     whileLoop(n: number) {
         let i = 0;
-        while(i < n) {
+        while (i < n) {
             console.log(i);
             i++;
         }
@@ -27,16 +27,16 @@ export default class Main {
         do {
             console.log(i);
             i++;
-        } while (i < n)
+        } while (i < n);
     }
 
     //This code will run n times. The time complexity of this code is O(n).
     searchLinear(array: Array<any>, value: any) {
         array.forEach((element, index) => {
-            if(element === value) {
+            if (element === value) {
                 return index;
             }
-        })
+        });
         return -1;
     }
 
@@ -46,8 +46,8 @@ export default class Main {
         let end = array.length - 1;
         let middle = Math.floor(end / 2);
 
-        while(array[middle] !== value && start <= end) {
-            if(value < array[middle]) {
+        while (array[middle] !== value && start <= end) {
+            if (value < array[middle]) {
                 end = middle - 1;
             } else {
                 start = middle + 1;
@@ -55,7 +55,7 @@ export default class Main {
             middle = Math.floor((start + end) / 2);
         }
 
-        if(array[middle] === value) {
+        if (array[middle] === value) {
             return middle;
         }
         return -1;
@@ -63,9 +63,9 @@ export default class Main {
 
     //This code will run n^2 times. The time complexity of this code is O(n^2).
     sortBubble(array: Array<any>) {
-        for(let i = array.length; i > 0; i--) {
-            for(let j = 0; j < i-1; j++) {
-                if(array[j] > array[j + 1]) {
+        for (let i = array.length; i > 0; i--) {
+            for (let j = 0; j < i - 1; j++) {
+                if (array[j] > array[j + 1]) {
                     [array[j], array[j + 1]] = [array[j + 1], array[j]];
                 }
             }
@@ -75,14 +75,14 @@ export default class Main {
 
     //This code will run n^2 times. The time complexity of this code is O(n^2).
     sortSelection(array: Array<any>) {
-        for(let i = 0; i < array.length; i++) {
+        for (let i = 0; i < array.length; i++) {
             let lowest = i;
-            for(let j = i + 1; j < array.length; j++) {
-                if(array[j] < array[lowest]) {
+            for (let j = i + 1; j < array.length; j++) {
+                if (array[j] < array[lowest]) {
                     lowest = j;
                 }
             }
-            if(i !== lowest) {
+            if (i !== lowest) {
                 let temp = array[i];
                 array[i] = array[lowest];
                 array[lowest] = temp;
@@ -93,9 +93,9 @@ export default class Main {
 
     //This code will run n^2 times. The time complexity of this code is O(n^2).
     sortInsertion(array: Array<any>) {
-        for(let i = 1; i < array.length; i++) {
+        for (let i = 1; i < array.length; i++) {
             let currentVal = array[i];
-            for(let j = i - 1; j >= 0 && array[j] > currentVal; j--) {
+            for (let j = i - 1; j >= 0 && array[j] > currentVal; j--) {
                 array[j + 1] = array[j];
             }
             array[i + 1] = currentVal;
@@ -105,7 +105,7 @@ export default class Main {
 
     //This code will run n log(n) times. The time complexity of this code is O(n log(n)).
     sortMerge(array: Array<any>) {
-        if(array.length <= 1) return array;
+        if (array.length <= 1) return array;
         let mid = Math.floor(array.length / 2);
         let left = this.sortMerge(array.slice(0, mid));
         let right = this.sortMerge(array.slice(mid));
@@ -116,8 +116,8 @@ export default class Main {
         let results = new Array<any>();
         let i = 0;
         let j = 0;
-        while(i < left.length && j < right.length) {
-            if(left[i] < right[j]) {
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
                 results.push(left[i]);
                 i++;
             } else {
@@ -125,11 +125,11 @@ export default class Main {
                 j++;
             }
         }
-        while(i < left.length) {
+        while (i < left.length) {
             results.push(left[i]);
             i++;
         }
-        while(j < right.length) {
+        while (j < right.length) {
             results.push(right[j]);
             j++;
         }
@@ -138,7 +138,7 @@ export default class Main {
 
     //This code will run n log(n) times. The time complexity of this code is O(n log(n)).
     sortQuick(array: Array<any>, left = 0, right = array.length - 1) {
-        if(left < right) {
+        if (left < right) {
             let pivotIndex = this.helperPivot(array, left, right);
             this.sortQuick(array, left, pivotIndex - 1);
             this.sortQuick(array, pivotIndex + 1, right);
@@ -149,8 +149,8 @@ export default class Main {
     helperPivot(array: Array<any>, start = 0, end = array.length + 1) {
         let pivot = array[start];
         let swapIdx = start;
-        for(let i = start + 1; i < array.length; i++) {
-            if(pivot > array[i]) {
+        for (let i = start + 1; i < array.length; i++) {
+            if (pivot > array[i]) {
                 swapIdx++;
                 this.helperSwap(array, swapIdx, i);
             }

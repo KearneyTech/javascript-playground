@@ -1,3 +1,3 @@
-import { Sample } from "./sample"
+import { Sample } from './sample';
 
-let sample = new Sample("so");
+let sample = new Sample('so');

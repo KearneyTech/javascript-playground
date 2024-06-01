@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 exports.__esModule = true;
 var PlaygroundArray = /** @class */ (function () {
     function PlaygroundArray(message) {
@@ -12,8 +12,7 @@ var PlaygroundArray = /** @class */ (function () {
             return x;
         });
         var filterExample = this.arrayString.filter(function (x) {
-            if (_this.filterHelp(x))
-                return x;
+            if (_this.filterHelp(x)) return x;
         });
         var initialValue = 0;
         var reduceExample = this.arrayString.reduce(this.reduceHelp);
@@ -22,7 +21,7 @@ var PlaygroundArray = /** @class */ (function () {
         console.log(reduceExample);
     };
     PlaygroundArray.prototype.mapHelp = function (param) {
-        console.log("greet, " + param);
+        console.log('greet, ' + param);
         return param;
     };
     PlaygroundArray.prototype.filterHelp = function (param) {
@@ -37,21 +36,25 @@ var PlaygroundArray = /** @class */ (function () {
     /**
      * The lowest tempurature over the past week.
      */
-    PlaygroundArray.prototype.reduceWeatherLowByWeek = function (previousValue, currentValue, index) {
+    PlaygroundArray.prototype.reduceWeatherLowByWeek = function (
+        previousValue,
+        currentValue,
+        index
+    ) {
         return previousValue < currentValue ? previousValue : currentValue;
     };
     return PlaygroundArray;
-}());
-exports["default"] = PlaygroundArray;
-var paramData = ["one", "two", "kool", "kalm"];
+})();
+exports['default'] = PlaygroundArray;
+var paramData = ['one', 'two', 'kool', 'kalm'];
 var esampleData = {
     items: [
         {
-            name: "",
-            value: ""
+            name: '',
+            value: ''
         }
     ],
-    paramData: ["one", "two", "kool", "kalm"]
+    paramData: ['one', 'two', 'kool', 'kalm']
 };
 //let sample = new PlaygroundArray(paramData);
 //let outerLimits = paramData.reduce(sample.reduceHelp);
@@ -62,8 +65,14 @@ var esampleData = {
 //execute
 //result
 function func(paramArray) {
-    var reducer = function (sum, val) { return sum + val; };
+    var reducer = function (sum, val) {
+        return sum + val;
+    };
     var initialValue = 0;
-    return paramArray.map(function (item) { return item > 1 ? item : 0; }).reduce(reducer, initialValue);
+    return paramArray
+        .map(function (item) {
+            return item > 1 ? item : 0;
+        })
+        .reduce(reducer, initialValue);
 }
 console.log(func([1, 2, 3, 4]));
