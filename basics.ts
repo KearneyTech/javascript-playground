@@ -37,3 +37,10 @@ console.log(low <= high); //true
 console.log(high >= low); //true
 console.log(10 <= high); //true
 console.log(0 >= low); //true
+
+//DOM Manipulation
+const _param = "SOME TEXT";
+let elementValue = document.querySelector(`[data-continent="${_param}"]`)?.innerHTML;
+
+//Math - Maximum value
+var big = Math.max(1, 2); // 2
