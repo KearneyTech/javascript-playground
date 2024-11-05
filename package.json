@@ -10,7 +10,8 @@
         "bigo": "tsc bigONotation.ts",
         "cypress:open": "cypress open",
         "test": "mocha",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "compile": "tsc"
     },
     "dependencies": {
         "axios": "^0.21.1",
