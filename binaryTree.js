@@ -9,7 +9,6 @@ var StudyNode = /** @class */ (function () {
     }
     return StudyNode;
 }());
-;
 // Utility function to create
 // a new Binary Tree Node
 function newNode(item) {
@@ -27,7 +26,7 @@ function findDepth(root, x) {
     // Initialize distance as -1
     var dist = -1;
     // Check if x is current node=
-    if ((root.data == x) ||
+    if (root.data == x ||
         // Otherwise, check if x is
         // present in the left subtree
         (dist = findDepth(root.left, x)) >= 0 ||
@@ -37,6 +36,18 @@ function findDepth(root, x) {
         // Return depth of the node
         return dist + 1;
     return dist;
+}
+// Function to find the depth of a
+// Binary Tree using depth-first (DFS) approach.
+function findTreeDepth(root) {
+    // Base case
+    if (root == null)
+        return 0;
+    // Initialize distance as 0
+    var dist = 0;
+    var leftDepth = findTreeDepth(root.left);
+    var rightDepth = findTreeDepth(root.right);
+    return Math.max(leftDepth, rightDepth) + 1;
 }
 // Helper function to find the height
 // of a given node in the binary tree
@@ -66,6 +77,13 @@ function findHeight(root, x) {
 }
 // Driver Code
 // Binary Tree Formation
+//       5
+//     /   \
+//   10     15
+//  /  \    / \
+// 20  25  30  35
+//       \
+//        45
 var root = newNode(5);
 root.left = newNode(10);
 root.right = newNode(15);
@@ -77,7 +95,10 @@ root.right.right = newNode(35);
 var k = 25;
 // Function call to find the
 // depth of a given node
-console.log("Depth: " + findDepth(root, k) + "<br>");
+console.log("Depth: " + findDepth(root, k)); // 2
 // Function call to find the
 // height of a given node
-console.log("Height: " + findHeight(root, k));
+console.log("Height: " + findHeight(root, k)); // 1
+// Function call to find the
+// depth of the tree
+console.log("Tree Depth: " + findTreeDepth(root)); // 4?
