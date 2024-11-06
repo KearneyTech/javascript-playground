@@ -122,3 +122,52 @@ console.log(`Height: ${findHeight(root, k)}`); // 1
 // Function call to find the
 // depth of the tree
 console.log(`Tree Depth: ${findTreeDepth(root)}`); // 4?
+
+
+
+
+// Recursive javascript program for level
+// order traversal of Binary Tree
+
+
+// Function to print level order traversal of tree
+function printLevelOrder(root) {
+    var h = bfsHeight(root);
+    var i;
+    for (i = 1; i <= h; i++)
+        printCurrentLevel(root, i);
+}
+
+// Print nodes at the current level
+function printCurrentLevel(root, level) {
+    if (root == null)
+        return;
+    if (level == 1)
+        console.log(root.data + " ");
+    else if (level > 1) {
+        printCurrentLevel(root.left, level - 1);
+        printCurrentLevel(root.right, level - 1);
+    }
+}
+
+// Compute the "height" of a tree
+function bfsHeight(root) {
+    if (root == null)
+        return 0;
+    else {
+        var lheight = bfsHeight(root.left);
+        var rheight = bfsHeight(root.right);
+        if (lheight > rheight)
+            return (lheight + 1);
+        else
+            return (rheight + 1);
+    }
+}
+
+let bfsRoot = newNode(1);
+bfsRoot.left = newNode(2);
+bfsRoot.right = newNode(3);
+bfsRoot.left.left = newNode(4);
+bfsRoot.left.right = newNode(5);
+printLevelOrder(bfsRoot);
+
