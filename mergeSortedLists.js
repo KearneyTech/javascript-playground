@@ -6,26 +6,73 @@
  * }
  */
 /**
- * @param {ListNode} list1
- * @param {ListNode} list2
- * @return {ListNode}
+ * @param {LinkedList} list1
+ * @param {LinkedList} list2
+ * @return {LinkedList}
  */
 var mergeTwoLists = function (l1, l2) {
-    var mergedHead = { val: -1, next: null }, crt = mergedHead;
-    while (l1 && l2) {
-        if (l1.val > l2.val) {
-            crt.next = l2;
-            l2 = l2.next;
+    //var mergedHead = { val : -1, next : null },
+    //    crt = mergedHead;
+    var mergedHead = new LinkedList(), crt = mergedHead;
+    while (l1.head && l2.head) {
+        if (l1.head.val > l2.head.val) {
+            crt.add(l2.head.val);
+            l2.head = l2.head.next;
         }
         else {
-            crt.next = l1;
-            l1 = l1.next;
+            crt.add(l1.head.val);
+            l1.head = l1.head.next;
         }
-        crt = crt.next;
     }
-    crt.next = l1 || l2;
-    return mergedHead.next;
+    return mergedHead;
 };
+var ListNode = /** @class */ (function () {
+    function ListNode(val, next) {
+        this.val = val === undefined ? 0 : val;
+        this.next = next === undefined ? null : next;
+    }
+    return ListNode;
+}());
+var LinkedList = /** @class */ (function () {
+    function LinkedList() {
+    }
+    LinkedList.prototype.addArray = function (list) {
+        for (var i = 0; i < list.length; i++) {
+            this.add(list[i]);
+        }
+    };
+    LinkedList.prototype.add = function (value) {
+        var newNode = new ListNode(value, null);
+        if (!this.head) {
+            this.head = newNode;
+            return;
+        }
+        else {
+            var current = this.head;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    };
+    LinkedList.prototype.toConsole = function () {
+        var node = this.head;
+        while (node != null) {
+            console.log("val: " + node.val);
+            node = node.next;
+        }
+    };
+    return LinkedList;
+}());
 var list1 = [1, 2, 4], list2 = [1, 3, 4];
-var mergedList = mergeTwoLists(list1, list2);
-console.log(mergedList);
+var linkedList1 = new LinkedList();
+linkedList1.addArray(list1);
+var linkedList2 = new LinkedList();
+linkedList2.addArray(list2);
+console.log('linkedList1');
+linkedList1.toConsole();
+console.log('linkedList2');
+linkedList2.toConsole();
+var mergedList = mergeTwoLists(linkedList1, linkedList2);
+console.log('mergedList');
+mergedList.toConsole();
