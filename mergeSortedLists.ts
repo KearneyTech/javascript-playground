@@ -10,9 +10,8 @@
  * @param {LinkedList} list2
  * @return {LinkedList}
  */
-var mergeTwoLists = function (l1, l2) {
-    //var mergedHead = { val : -1, next : null },
-    //    crt = mergedHead;
+var mergeTwoLists = function (p_l1, p_l2) {
+    let l1 = p_l1, l2 = p_l2;
 
     let mergedHead = new LinkedList(),
         crt = mergedHead;
@@ -28,6 +27,25 @@ var mergeTwoLists = function (l1, l2) {
     }
 
     return mergedHead;
+};
+
+var mergeTwoListsTry2 = function (p_node1, p_node2) {
+    let node1 = p_node1, node2 = p_node2;
+    let tempNode = new ListNode(-1, null),
+        crt = tempNode;
+
+    while (node1 && node2) {
+        if (node1.val > node2.val) {
+            crt.next = node2;
+            node2 = node2.next;
+        } else {
+            crt.next = node1;
+            node1 = node1.next;
+        }
+        crt = crt.next;
+    }
+
+    return tempNode.next;
 };
 
 class ListNode {
@@ -91,3 +109,16 @@ linkedList2.toConsole();
 const mergedList = mergeTwoLists(linkedList1, linkedList2);
 console.log('mergedList');
 mergedList.toConsole();
+
+linkedList1 = new LinkedList();
+linkedList1.addArray(list1);
+linkedList2 = new LinkedList();
+linkedList2.addArray(list2);
+let mergedList2 = mergeTwoListsTry2(linkedList1.head, linkedList2.head);
+
+console.log('mergedList2');
+console.log(mergedList2);
+while (mergedList2) {
+    console.log(mergedList2.val);
+    mergedList2 = mergedList2.next;
+}
